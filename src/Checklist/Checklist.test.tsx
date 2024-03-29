@@ -32,3 +32,16 @@ test('should render correct list items when renderItem specified', function () {
   );
   expect(screen.getByText('Lucy - Manager')).toBeInTheDocument();
 });
+
+test('should render correct checked items when specified', function () {
+  render(
+    <Checklist
+      data={[{ id: 1, name: 'Lucy', role: 'Manager' }]}
+      id='id'
+      primary='name'
+      secondary='role'
+      checkedIds={[1]}
+    />
+  );
+  expect(screen.getByTestId('Checklist__input__1')).toBeChecked();
+});
